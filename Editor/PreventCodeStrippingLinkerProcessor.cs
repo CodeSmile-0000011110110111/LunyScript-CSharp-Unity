@@ -1,15 +1,14 @@
-﻿using LunyEditor;
-using LunyScript;
+﻿using Luny.UnityEditor.Linking;
 using System;
 
-namespace LunyScriptEditor
+namespace LunyScript.UnityEditor
 {
 	internal sealed class PreventCodeStrippingLinkerProcessor : LunyLinkerProcessor
 	{
 		public override PreserveDetails[] GetPreserveDetails()
 		{
 			// preserve all user scripts across assemblies (any scripts in Editor assemblies will not be in build)
-			var details = PreserveAllDerivedClasses<LunyScript.LunyScript>();
+			var details = PreserveAllDerivedClasses<LunyScript>();
 
 			details.Add(new PreserveDetails
 			{
