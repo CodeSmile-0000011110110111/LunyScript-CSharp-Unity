@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Linq;
 using UnityEditor;
 using UnityEditor.TestTools;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-namespace LunyScript.Unity.Tests.Editor
+namespace LunyScript.Unity.Tests
 {
 	[PrebuildSetup(typeof(LifecycleTests))]
 	public sealed class TestSceneSetup : IPrebuildSetup, IPostBuildCleanup
