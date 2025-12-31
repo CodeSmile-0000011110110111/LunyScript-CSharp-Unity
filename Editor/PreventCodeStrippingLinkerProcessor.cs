@@ -17,7 +17,7 @@ namespace LunyScript.UnityEditor
 				Types = new[]
 				{
 					// script runner is discovered through reflection
-					typeof(LunyScriptRunner).FullName,
+					typeof(ScriptRunner).FullName,
 				},
 			});
 

@@ -14,7 +14,7 @@ namespace LunyScript.Unity.Tests
 		public void Setup()
 		{
 			Debug.LogWarning("SETUP");
-			//SceneManager.LoadScene("Packages/de.codesmile.lunyscript/LunyScript.Unity/Tests/ObjectLifecycleTests.unity");
+			SceneManager.LoadScene(0);
 
 			_globalVars = LunyScriptEngine.Instance.GlobalVariables;
 		}
