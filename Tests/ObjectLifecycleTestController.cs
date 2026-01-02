@@ -1,3 +1,4 @@
+using Luny.Diagnostics;
 using LunyScript.Tests;
 using System;
 using UnityEngine;
@@ -5,7 +6,6 @@ using Object = System.Object;
 
 namespace LunyScript.Unity.Tests
 {
-	[DefaultExecutionOrder(-1000)]
 	public sealed class ObjectLifecycleTestController : MonoBehaviour
 	{
 		[Header("Tests")]
@@ -18,7 +18,22 @@ namespace LunyScript.Unity.Tests
 		public Boolean Assert_Runs_EveryFrame_Passed;
 		public Boolean Assert_Runs_EveryFrameEnds_Passed;
 
-		private void Awake() => LunyScriptEngine.Instance.GlobalVariables.OnVariableChanged += OnVariableChanged;
+		private void Awake()
+		{
+			LunyLogger.LogWarning("AWAKE", this);
+			LunyScriptEngine.Instance.GlobalVariables.OnVariableChanged += OnVariableChanged;
+		}
+
+		private void OnEnable() => LunyLogger.LogWarning("ONENABLE", this);
+
+		private void Start() => LunyLogger.LogWarning("START", this);
+
+		private void OnDestroy()
+		{
+			var scriptEngine = LunyScriptEngine.Instance;
+			if (scriptEngine != null)
+				scriptEngine.GlobalVariables.OnVariableChanged -= OnVariableChanged;
+		}
 
 		private void OnVariableChanged(Object sender, VariableChangedEventArgs changedVar)
 		{
