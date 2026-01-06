@@ -57,7 +57,7 @@ namespace LunyScript.Unity.Tests
 		{
 			//Debug.Log($"{e} ({sender})", this);
 
-			var pass = changedVar.LunyScriptVariable.Boolean();
+			var pass = changedVar.Variable.Boolean();
 			if (changedVar.Name == nameof(Assert_Runs_WhenCreated))
 				Assert_Runs_WhenCreated_Passed = pass;
 			else if (changedVar.Name == nameof(Assert_Runs_WhenDestroyed))
