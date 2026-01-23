@@ -1,5 +1,5 @@
 {
-    "name": "LunyScript.Unity.Tests",
+    "name": "LunyScript.Unity.SmokeTests",
     "rootNamespace": "",
     "references": [
         "UnityEngine.TestRunner",
@@ -7,7 +7,7 @@
         "LunyScript",
         "LunyScript.Unity",
         "Luny",
-        "LunyScript.Tests"
+        "LunyScript.SmokeTests"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
