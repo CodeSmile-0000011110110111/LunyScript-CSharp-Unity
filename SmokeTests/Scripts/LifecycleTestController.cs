@@ -5,9 +5,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Object = System.Object;
 
-namespace LunyScript.Unity.Tests
+namespace LunyScript.Unity.SmokeTests
 {
-	public sealed class ObjectLifecycleTestController : MonoBehaviour
+	public sealed class LifecycleTestController : MonoBehaviour
 	{
 		[Header("Tests")]
 		public Boolean Assert_Runs_WhenCreated_Passed;
