@@ -34,7 +34,7 @@ namespace LunyScript.Unity.SmokeTests
 		private void Awake()
 		{
 			// LunyLogger.LogWarning($"AWAKE: Frame {Time.frameCount}", this);
-			var globalVars = LunyScriptEngine.Instance.GlobalVariables;
+			var globalVars = LunyScriptEngine.Instance.GlobalVars;
 			globalVars.Clear();
 			globalVars.OnVariableChanged += OnVariableChanged;
 		}
@@ -47,7 +47,7 @@ namespace LunyScript.Unity.SmokeTests
 		{
 			var scriptEngine = LunyScriptEngine.Instance;
 			if (scriptEngine != null)
-				scriptEngine.GlobalVariables.OnVariableChanged -= OnVariableChanged;
+				scriptEngine.GlobalVars.OnVariableChanged -= OnVariableChanged;
 		}
 
 		private IEnumerator ReloadSceneNextFrame()
@@ -61,7 +61,7 @@ namespace LunyScript.Unity.SmokeTests
 		{
 			//Debug.Log($"{e} ({sender})", this);
 
-			var pass = changedVar.Variable.Boolean();
+			var pass = changedVar.Variable.AsBoolean();
 			if (changedVar.Name == nameof(Assert_Runs_WhenCreated))
 				Assert_Runs_WhenCreated_Passed = pass;
 			else if (changedVar.Name == nameof(Assert_Runs_WhenDestroyed))
