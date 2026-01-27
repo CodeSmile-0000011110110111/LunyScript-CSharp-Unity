@@ -31,32 +31,11 @@ namespace LunyScript.Unity.SmokeTests
 			}
 		}
 
-#pragma warning disable 0114 // hides inherited member
-		private void Awake()
-		{
-			// LunyLogger.LogWarning($"AWAKE: Frame {Time.frameCount}", this);
-			var globalVars = LunyScriptEngine.Instance.GlobalVars;
-			globalVars.Clear();
-			globalVars.OnVariableChanged += OnVariableChanged;
-		}
-
-		// private void OnEnable() => LunyLogger.LogWarning($"ONENABLE: Frame {Time.frameCount}", this);
-		// private void Start() => LunyLogger.LogWarning($"START: Frame {Time.frameCount}", this);
-		// private void Update() => LunyLogger.LogWarning($"UPDATE: Frame {Time.frameCount}", this);
-
-		private void OnDestroy()
-		{
-			var scriptEngine = LunyScriptEngine.Instance;
-			if (scriptEngine != null)
-				scriptEngine.GlobalVars.OnVariableChanged -= OnVariableChanged;
-		}
-#pragma warning restore 0114 // hides inherited member
-
 		private IEnumerator ReloadSceneNextFrame()
 		{
 			yield return null;
 
-			SceneManager.LoadScene(SceneManager.GetActiveScene().name, LoadSceneMode.Single);
+			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 		}
 
 		private void OnVariableChanged(Object sender, LunyScriptVariableChangedArgs changedVar)
@@ -83,5 +62,26 @@ namespace LunyScript.Unity.SmokeTests
 			else
 				throw new ArgumentOutOfRangeException(nameof(changedVar.Name));
 		}
+
+#pragma warning disable 0114 // hides inherited member
+		private void Awake()
+		{
+			// LunyLogger.LogWarning($"AWAKE: Frame {Time.frameCount}", this);
+			var globalVars = LunyScriptEngine.Instance.GlobalVars;
+			globalVars.Clear();
+			globalVars.OnVariableChanged += OnVariableChanged;
+		}
+
+		// private void OnEnable() => LunyLogger.LogWarning($"ONENABLE: Frame {Time.frameCount}", this);
+		// private void Start() => LunyLogger.LogWarning($"START: Frame {Time.frameCount}", this);
+		// private void Update() => LunyLogger.LogWarning($"UPDATE: Frame {Time.frameCount}", this);
+
+		private void OnDestroy()
+		{
+			var scriptEngine = LunyScriptEngine.Instance;
+			if (scriptEngine != null)
+				scriptEngine.GlobalVars.OnVariableChanged -= OnVariableChanged;
+		}
+#pragma warning restore 0114 // hides inherited member
 	}
 }
